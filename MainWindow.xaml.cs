@@ -126,10 +126,7 @@ namespace DolgozatWPF
 
             List<string> sorok = File.ReadAllLines(fileNyit.FileName).ToList();
             sorok.RemoveAt(0);
-            foreach (var sor in sorok)
-            {
-                lakohely.Add(new Lakohely(sor));
-            }
+            foreach (var sor in sorok){lakohely.Add(new Lakohely(sor));}
 
             UjElem("4a feladat");
             UjElem(lakohely.MinBy(x => x.Nok).Telepules);
