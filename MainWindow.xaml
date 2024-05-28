@@ -23,11 +23,11 @@
             <Button x:Name = "btn4" Content = "4-es szint" Width = "100" Click = "btn4_Click" />
             <Button x:Name = "btn5" Content = "5-ös szint" Width = "100" Click = "btn5_Click" />
         </StackPanel>
-            <Label Grid.Column="1"  x:Name = "labEredmeny1" FontSize = "20" Foreground = "Red" Content = "Itt lesz a 2a) eredmény!" />
-            <Label Grid.Column="1" Grid.Row="1" x:Name = "labEredmeny2" FontSize = "20" Foreground = "Red" Content = "Itt lesz a 2b) eredmény!" />
+        <Label Grid.Column="1"  x:Name = "labEredmeny1" FontSize = "20" Foreground = "Red" Content = "Itt lesz a 2a) eredmény!" />
+        <Label Grid.Column="1" Grid.Row="1" x:Name = "labEredmeny2" FontSize = "20" Foreground = "Red" Content = "Itt lesz a 2b) eredmény!" />
         <ListBox Background="LightBlue" Grid.Row="2" x:Name="lbLista">
         </ListBox>
-        
+
         <Grid x:Name="grdRacs" Grid.Column="1" Grid.Row="2" Background="LightGreen">
 
         </Grid>

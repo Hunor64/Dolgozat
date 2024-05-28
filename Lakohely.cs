@@ -24,8 +24,8 @@ namespace DolgozatWPF
         }
 
         public string VarmegyeKod { get => varmegyeKod; }
-        public string Telepules { get => telepules;  }
-        public string Tipus { get => tipus;  }
+        public string Telepules { get => telepules; }
+        public string Tipus { get => tipus; }
         public int Ferfiak { get => ferfiak; }
         public int Nok { get => nok; }
     }

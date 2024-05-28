@@ -29,6 +29,7 @@ namespace DolgozatWPF
             //todo 2a)
             //Mennyi azoknak a háromjegyű számoknak az összege, ahol a szám első számjegye (100-as helyiérték) háromszorosa a szám utolsó számjegyének (1-esek helyiértéke)
             //Példa: 632 , mivel 6 = 2 * 3
+
             int szamErtek = 0;
             for (int i = 100; i != 999; i++)
             {
@@ -50,6 +51,7 @@ namespace DolgozatWPF
             //A megadott szám prímtényezős felbontásában hányszor szerepel a 2 és a 3 ?
             //pld: 1008 = 2^4 * 3^2 * 7   <- mivel 2*2*2*2 * 3*3 * 7 = 1008
             //Írja ki a következő formátumban az eredményt!  2^■ * 3^■ * ■ , ahol a ■ helyére kerülő számokat a programja határozza meg.
+
             int count2 = 0;
             int count3 = 0;
             long szam = 86220288;
@@ -82,11 +84,12 @@ namespace DolgozatWPF
             //A meglévő elnevezett (x:name) vezérlőket tartsa meg, de attribútumain módosíthat!
             //Helyezzen el ListBox vezérlőt lbLista néven és egy Grid elrendezés vezérlőt grdRacs néven!
 
-            lbLista.Items.Clear();
             int[] befizetesek = { 1250, 37500, 25900, 3500, 460, 580, 6985, 72500 };
 
             //todo: A felület átalakítása után a mintának megfelelően helyezze a listadobozba a sorokat!
             //Minden sor formtáuma a következő: kasszában lévő érték + új befizetés = új összeg
+
+            lbLista.Items.Clear();
             int ujOsszeg = 0;
             foreach (var elem in befizetesek)
             {
@@ -105,7 +108,6 @@ namespace DolgozatWPF
         List<Lakohely> lakohely = new List<Lakohely>();
         private void btn4_Click(object sender, RoutedEventArgs e)
         {
-            lbLista.Items.Clear();
             //todo: OpenFileDialog segítségével talózza ki a kapott fájlt és olvassa be annak tartalmát!
             //A fájl CSV formátumú sorokat tartalmaz.
             //Hozzon létre egy új osztályt Lakohely néven és a beolvasást az osztályból álló listába végezze!
@@ -118,6 +120,7 @@ namespace DolgozatWPF
 
             //4c) Hány olyan megye van, ahol 500 000 főt meghaladja a lakosság létszáma?
 
+            lbLista.Items.Clear();
             OpenFileDialog fileNyit = new OpenFileDialog();
             fileNyit.ShowDialog();
 
@@ -127,20 +130,19 @@ namespace DolgozatWPF
             {
                 lakohely.Add(new Lakohely(sor));
             }
+
             UjElem("4a feladat");
             UjElem(lakohely.MinBy(x => x.Nok).Telepules);
+
             UjElem("4b feladat");
-            List<Lakohely> tobbFerfiMintNo = lakohely.Where(x => x.Ferfiak>x.Nok && x.Tipus == "város").OrderBy(x=>x.Telepules).Reverse().ToList();
-            foreach (var elem in tobbFerfiMintNo)
-            {
-                UjElem(elem.Telepules);
-            }
+            List<Lakohely> tobbFerfiMintNo = lakohely.Where(x => x.Ferfiak > x.Nok && x.Tipus == "város").OrderBy(x => x.Telepules).Reverse().ToList();
+            foreach (var elem in tobbFerfiMintNo) { UjElem(elem.Telepules); }
+
             UjElem("4c feladat");
             int megyekSzama = 0;
-            List<Lakohely> sokEmber = lakohely.Where(x => lakohely.Where(y=>y.VarmegyeKod == x.VarmegyeKod).Sum(y => y.Ferfiak+y.Nok) > 500000).ToList();
             List<string> meglevoMegyek = new List<string>();
 
-            foreach (var eleme in sokEmber)
+            foreach (var eleme in lakohely.Where(x => lakohely.Where(y => y.VarmegyeKod == x.VarmegyeKod).Sum(y => y.Ferfiak + y.Nok) > 500000).ToList())
             {
                 if (meglevoMegyek.FindIndex(x => x == eleme.VarmegyeKod) == -1)
                 {
@@ -148,11 +150,7 @@ namespace DolgozatWPF
                     megyekSzama++;
                 }
             }
-
             UjElem($"Megyék száma:{megyekSzama}");
-
-
-
         }
 
         private void btn5_Click(object sender, RoutedEventArgs e)
