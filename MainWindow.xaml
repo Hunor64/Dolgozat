@@ -1,0 +1,35 @@
+﻿<Window x:Class="DolgozatWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DolgozatWPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60px"/>
+            <RowDefinition Height="60px"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.RowSpan="2" Grid.Column="0" Orientation = "Vertical"  VerticalAlignment = "Center" >
+            <Button x:Name = "btn2a" Content = "2-es szint a)" Width = "100" Click = "btn2a_Click" />
+            <Button x:Name = "btn2b" Content = "2-es szint b)" Width = "100" Click = "btn2b_Click" />
+            <Button x:Name = "btn3" Content = "3-as szint" Width = "100" Click = "btn3_Click" />
+            <Button x:Name = "btn4" Content = "4-es szint" Width = "100" Click = "btn4_Click" />
+            <Button x:Name = "btn5" Content = "5-ös szint" Width = "100" Click = "btn5_Click" />
+        </StackPanel>
+            <Label Grid.Column="1"  x:Name = "labEredmeny1" FontSize = "20" Foreground = "Red" Content = "Itt lesz a 2a) eredmény!" />
+            <Label Grid.Column="1" Grid.Row="1" x:Name = "labEredmeny2" FontSize = "20" Foreground = "Red" Content = "Itt lesz a 2b) eredmény!" />
+        <ListBox Background="LightBlue" Grid.Row="2" x:Name="lbLista">
+        </ListBox>
+        
+        <Grid x:Name="grdRacs" Grid.Column="1" Grid.Row="2" Background="LightGreen">
+
+        </Grid>
+    </Grid>
+</Window>
