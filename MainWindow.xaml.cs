@@ -21,6 +21,7 @@ namespace DolgozatWPF
         public MainWindow()
         {
             InitializeComponent();
+            CreateGrid();
         }
 
 
@@ -152,8 +153,48 @@ namespace DolgozatWPF
 
         private void btn5_Click(object sender, RoutedEventArgs e)
         {
+            LoadGrid();
 
+        }
+        public void CreateGrid()
+        {
+            for (int sor = 0; sor < 4; sor++)
+            {
+                RowDefinition rowDef = new RowDefinition();
+                grdRacs.RowDefinitions.Add(rowDef);
+            }
+            for (int oszlop = 0; oszlop < 3; oszlop++)
+            {
+                ColumnDefinition colDef = new ColumnDefinition();
+                grdRacs.ColumnDefinitions.Add(colDef);
+            }
+        }
+        public void LoadGrid()
+        {
+            for (int sor = 0; sor < 4; sor++)
+            {
+                for (int oszlop = 0; oszlop < 3; oszlop++)
+                {
+                    Button gomb = new();
+                    gomb.Content = $"[{oszlop + 1}:{sor + 1}]";
+                    gomb.Click += Gomb_Click;
+                    Grid.SetRow(gomb, sor);
+                    Grid.SetColumn(gomb, oszlop);
+                    grdRacs.Children.Add(gomb);
+                }
+            }
+        }
 
+        private void Gomb_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedGomb = sender as Button;
+            ablak.Title = selectedGomb.Content.ToString();
+            grdRacs.Children.Remove(sender as Button);
+            deathCount++;
+            if (grdRacs.Children.Count == 0)
+            {
+                LoadGrid();
+            }
         }
 
 
